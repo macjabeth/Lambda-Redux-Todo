@@ -19,7 +19,7 @@ function todo(state, action) {
     case ADD_TODO:
       return {
         task: action.task,
-        id: Date.now(),
+        id: action.id,
         completed: false
       };
     case TOGGLE_TODO:

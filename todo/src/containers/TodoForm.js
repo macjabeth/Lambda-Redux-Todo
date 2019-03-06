@@ -17,7 +17,7 @@ const TodoForm = ({
   const handleInput = e => updateInput(e.target.value);
   const handleSubmit = e => {
     e.preventDefault();
-    addTodo(input);
+    addTodo(input, Date.now());
     updateInput('');
   };
 
