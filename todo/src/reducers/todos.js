@@ -14,26 +14,39 @@ const initialState = [
   }
 ];
 
-export default (state = initialState, action) => {
+function todo(state, action) {
   switch (action.type) {
     case ADD_TODO:
-      return state.concat({
+      return {
         task: action.task,
         id: Date.now(),
         completed: false
-      });
+      };
     case TOGGLE_TODO:
-      return state.map(todo =>
-        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
-      );
+      return state.id === action.id
+        ? { ...state, completed: !state.completed }
+        : state;
     case UPDATE_TODO:
-      return state.map(todo =>
-        todo.id === action.id ? { ...todo, task: action.task } : todo
-      );
+      return state.id === action.id ? { ...state, task: action.task } : state;
     case DELETE_TODO:
-      return state.filter(todo => todo.id !== action.id);
+      return state.id !== action.id;
     case CLEAR_TODOS:
-      return [];
+      return !state.completed;
+    default:
+      return state;
+  }
+}
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_TODO:
+      return state.concat(todo(null, action));
+    case TOGGLE_TODO:
+    case UPDATE_TODO:
+      return state.map(t => todo(t, action));
+    case DELETE_TODO:
+    case CLEAR_TODOS:
+      return state.filter(t => todo(t, action));
     default:
       return state;
   }
