@@ -2,7 +2,7 @@ export const UPDATE_INPUT = 'UPDATE_INPUT';
 export const updateInput = value => ({ type: UPDATE_INPUT, value });
 
 export const ADD_TODO = 'ADD_TODO';
-export const addTodo = (task, id) => ({ type: ADD_TODO, task, id });
+export const addTodo = (task, id) => ({ type: ADD_TODO, task, id: Date.now() });
 
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const toggleTodo = id => ({ type: TOGGLE_TODO, id });
