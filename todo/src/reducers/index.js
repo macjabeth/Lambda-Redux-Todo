@@ -2,10 +2,10 @@ import { combineReducers } from 'redux';
 
 import todos from './todos';
 import searching from './searching';
-import todoInput from './todoInput';
+import input from './input';
 
 export default combineReducers({
   todos,
   searching,
-  todoInput
+  input
 });

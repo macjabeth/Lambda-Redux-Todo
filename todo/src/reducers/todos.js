@@ -51,3 +51,11 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export const getFilteredTodos = (state, searching, filter) => {
+  if (!searching) {
+    return state;
+  } else {
+    return state.filter(({ task }) => task.includes(filter));
+  }
+};

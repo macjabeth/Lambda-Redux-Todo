@@ -83,9 +83,9 @@ const Icon = type => styled(type)`
 const SearchIcon = Icon(Search);
 const TrashIcon = Icon(TrashAlt);
 
-const mapStateToProps = state => ({
-  searching: state.searching,
-  input: state.todoInput
+const mapStateToProps = ({ searching, input }) => ({
+  searching,
+  input
 });
 
 export default connect(
